@@ -13,20 +13,14 @@ fs.readFile('data.json', 'utf8', (err, data) => {
 
     // Знаходимо максимальний курс
     let maxRate = exchangeRates[0].rate; // Встановимо maxRate на перший курс з масиву
-    let maxCurrency = exchangeRates[0].cc; // Встановимо maxCurrency на валюту першого курсу
 
     for (const currency of exchangeRates) {
       if (currency.rate > maxRate) {
         maxRate = currency.rate;
-        maxCurrency = currency.cc;
       }
     }
 
-        // let maxRatet = Math.max(exchangeRates[currency]);
-    // maxRate = exchangeRates[currency];
-    // maxCurrency = currency;
-
-    const outputText = `Максимальний курс: ${maxCurrency} ${maxRate}`;
+    const outputText = `Максимальний курс: ${maxRate}`;
 
     // Запис у файл output.txt
     fs.writeFile('output.txt', outputText, 'utf8', (err) => {
